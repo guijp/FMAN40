@@ -16,7 +16,7 @@ model = SimpleAutoencoder(channels_in=3)
 # Training model with dataset
 loss_function = torch.nn.MSELoss()
 optimizer = torch.optim.Adam(model.parameters(), lr = 5e-2, weight_decay = 1e-8)
-model = train_auto(loader, model, optimizer, loss_function, n_epochs=1)
+model = train_auto(loader, model, optimizer, loss_function, n_epochs=100)
 
 fig, ax = plt.subplots(nrows=5, ncols=2)
 
