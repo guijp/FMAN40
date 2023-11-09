@@ -21,7 +21,8 @@ optimizer = torch.optim.Adam(model.parameters(), lr = 5e-2, weight_decay = 1e-8)
 n_epochs=1
 for _ in range(n_epochs):
   for image in loader: 
-
+    image = image.to(device)
+    
     reconstructed = model(image)
     loss = loss_function(reconstructed, image)
 
