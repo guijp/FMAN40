@@ -37,11 +37,11 @@ for i in range(5):
   image = image_batch[0].reshape(1,3,patch_size,patch_size)
 
   # Reshape the array for plotting
-  item = image[0,:,:,:].movedim(0,-1)
+  item = image[0,:,:,:].movedim(0,-1).cpu()
   ax[i][0].imshow(item)
 
   rec_item = model(image)
-  rec_image = rec_item[0,:,:,:].movedim(0,-1).detach().numpy()
+  rec_image = rec_item[0,:,:,:].movedim(0,-1).cpu().detach().numpy()
   ax[i][1].imshow(rec_image)
 
 plt.savefig('results.png')
