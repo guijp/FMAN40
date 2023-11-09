@@ -32,4 +32,4 @@ for i in range(5):
   rec_image = rec_item[0,:,:,:].movedim(0,-1).detach().numpy()
   ax[i][1].imshow(rec_image)
 
-plt.show()
+plt.savefig('results.png')
