@@ -1,6 +1,5 @@
 import torch 
 from autoencoders import SimpleAutoencoder
-from utils import train_auto
 import matplotlib.pyplot as plt
 from dataset import WSIAEDataset
 
@@ -9,19 +8,20 @@ print("running on: {}".format(device))
 
 # Creating dataset
 patch_size = 100
-dataset = WSIAEDataset(['wsis_2023-11-03/20PK 02736-7_10x.png'], patch_size=patch_size, overlap=0).to(device)
-loader = torch.utils.data.DataLoader(dataset = dataset, batch_size = 32, shuffle = True).to(device)
+dataset = WSIAEDataset(['wsis_2023-11-03/20PK 02736-7_10x.png'], patch_size=patch_size, overlap=0)
+loader = torch.utils.data.DataLoader(dataset = dataset, batch_size = 32, shuffle = True)
 
 # Initializing model
 model = SimpleAutoencoder(channels_in=3).to(device)
 
 # Training model with dataset
 loss_function = torch.nn.MSELoss()
-optimizer = torch.optim.Adam(model.parameters(), lr = 5e-2, weight_decay = 1e-8).to(device)
+optimizer = torch.optim.Adam(model.parameters(), lr = 5e-2, weight_decay = 1e-8)
 
 n_epochs=1
 for _ in range(n_epochs):
-  for image in dataset: 
+  for image in loader: 
+
     reconstructed = model(image)
     loss = loss_function(reconstructed, image)
 
