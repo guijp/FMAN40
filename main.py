@@ -6,7 +6,7 @@ from dataset import WSIAEDataset
 
 # Creating dataset
 patch_size = 100
-dataset = WSIAEDataset(['wsi/20PK 02736-7_10x.png'], patch_size=patch_size, overlap=0)
+dataset = WSIAEDataset(['wsis_2023-11-03/20PK 02736-7_10x.png'], patch_size=patch_size, overlap=0)
 print(len(dataset))
 loader = torch.utils.data.DataLoader(dataset = dataset, batch_size = 32, shuffle = True)
 
@@ -16,7 +16,7 @@ model = SimpleAutoencoder(channels_in=3)
 # Training model with dataset
 loss_function = torch.nn.MSELoss()
 optimizer = torch.optim.Adam(model.parameters(), lr = 5e-2, weight_decay = 1e-8)
-model = train_auto(loader, model, optimizer, loss_function, n_epochs=100)
+model = train_auto(loader, model, optimizer, loss_function, n_epochs=10)
 
 fig, ax = plt.subplots(nrows=5, ncols=2)
 
