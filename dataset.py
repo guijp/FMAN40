@@ -88,14 +88,14 @@ class WSIAEDataset(Dataset):
     def __init__(self,
                  wsi_paths,
                  patch_size,
-                 overlap):
+                 overlap,
+                 device):
         self.paths = wsi_paths
 
         self.current_wsi = 0
-
+        self.device = device
         self.patch_size = patch_size
         self.overlap = overlap
-        self.input_dtype = torch.float32
         self.transform = ToTensor()
 
         self.all_patches = []
@@ -155,8 +155,8 @@ class WSIAEDataset(Dataset):
 
         patch = self.wsi[y:y + self.patch_size, x:x + self.patch_size, :]
         
-        patch = self.transform(patch)
-        return patch.type(self.input_dtype)
+        patch = self.transform(patch).to(self.device)
+        return patch
 
 # class WSIDataset(Dataset):
 #     def __init__(self, path, patch_size):

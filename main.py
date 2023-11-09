@@ -8,7 +8,7 @@ print("running on: {}".format(device))
 
 # Creating dataset
 patch_size = 100
-dataset = WSIAEDataset(['wsis_2023-11-03/20PK 02736-7_10x.png'], patch_size=patch_size, overlap=0)
+dataset = WSIAEDataset(['wsis_2023-11-03/20PK 02736-7_10x.png'], patch_size=patch_size, overlap=0, device=device)
 loader = torch.utils.data.DataLoader(dataset = dataset, batch_size = 32, shuffle = True)
 
 # Initializing model
@@ -22,7 +22,7 @@ n_epochs=1
 for _ in range(n_epochs):
   for image in loader: 
     image = image.to(device)
-    
+
     reconstructed = model(image)
     loss = loss_function(reconstructed, image)
 
