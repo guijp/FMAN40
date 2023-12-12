@@ -1,5 +1,5 @@
-# Hand-in for FMAN40 - Projects in Applied Mathematics, Lund Universitets
-## Title:  _"A Study on the Effects of Latent Space Compression on a Pretrained Classifier for Prostate Biopsies"_
+# _"A Study on the Effects of Latent Space Compression on a Pretrained Classifier for Prostate Biopsies"_
+## Hand-in for FMAN40 - Project in Applied Mathematics - Lunds Universistet
 
 - Full report: [GuilhermeJP_FMAN40.pdf](GuilhermeJP_FMAN40.pdf)
 - Jupyter Notebook with the results of the report: [report.ipynb](report.ipynb)
