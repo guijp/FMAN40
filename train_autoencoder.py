@@ -40,7 +40,7 @@ autoencoder = Transfer(n=n_auto).to(device)
 optimizer = torch.optim.Adam(autoencoder.parameters(), lr = 1e-3, weight_decay = 1e-8)
 n_epochs = 1
 
-for dim in [0,1,2,3]: # For each possible latent space size
+for dim in range(n_auto): # For each possible latent space size
     print(f'dim: {dim}')
     for epoch_i in range(n_epochs):
         total_images = 0
